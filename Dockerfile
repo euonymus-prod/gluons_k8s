@@ -1,27 +1,24 @@
 # https://hub.docker.com/_/python/
-FROM python:3
+FROM python:3.6.4
 
-WORKDIR /usr/src/app
+RUN apt-get -q update && apt-get install -y -q \
+  sqlite3 --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+ENV LANG C.UTF-8
 
-COPY ./src .
+RUN pip install --upgrade pip
 
-CMD [ "python", "./script.py" ]
+RUN python -m venv venv
+ENV VIRTUAL_ENV /venv
+ENV PATH /venv/bin:$PATH
 
+RUN mkdir -p /app
+WORKDIR /app
 
-FROM ubuntu:18.04
-RUN apt-get -y update \
-    && apt-get -y upgrade \
-    && apt-get install -y locales curl python3-distutils \
-    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3 get-pip.py \
-    && pip install -U pip \
-    && mkdir /code \
-    && rm -rf /var/lib/apt/lists/* \
-    && localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
-ENV LANG ja_JP.utf8
-WORKDIR /code
-ADD requirements.txt /code
-RUN pip install -r requirements.txt    # requirements.txtからパッケージのインストール
+ADD requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+ADD . /app
+
+CMD gunicorn -b :8000 gluons.wsgi
