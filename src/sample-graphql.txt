@@ -1,0 +1,66 @@
+query {
+  quark (name: "東京大学"){
+    id
+    name
+    quarkType {
+      name
+      havingQuarkProperties {
+        quarkProperty {
+          name
+          targets (first:100, orderBy:"start") {
+            gluonType {
+              name
+            }
+            start
+            relation
+            target {
+              name
+              quarkType {
+                name
+                havingQuarkProperties {
+                  quarkProperty {
+                    name
+                    targets (orderBy:"start") {
+                      gluonType {
+                        name
+                      }
+                      relation
+                      target {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    relatives {
+      relation
+      target {
+        name
+        quarkType {
+          name
+          havingQuarkProperties {
+            quarkProperty {
+              name
+              targets (orderBy:"start") {
+                gluonType {
+                  name
+                }
+                relation
+                target {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
