@@ -28,6 +28,7 @@ $ gunicorn -b :8000 gluons.wsgi
 ## Docker build
 
 ```
+$ cd [path-to-project]/containers/gluons_graphql
 $ docker build -t euonymus/gluons-graphql:[versioning-tag] .
 ```
 

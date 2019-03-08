@@ -21,5 +21,4 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 
 ADD . /app
 
-WORKDIR /app/src
 CMD gunicorn -b :8000 gluons.wsgi
