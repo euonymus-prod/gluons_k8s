@@ -34,8 +34,12 @@ $ docker build -t euonymus/gluons-graphql:[versioning-tag] .
 
 ## Run Docker container on local
 
+You neet to create gluons-network before you create gluons-graphql
+See: /containers/postgres/README.md
+
+
 ```
-$ docker run -it --name [name the container freely] -p 8000:8000 euonymus/gluons-graphql:[versioning-tag]
+$ docker run -it --name gluons-graphql --network gluons-network -p 8000:8000 euonymus/gluons-graphql:[versioning-tag]
 ```
 
 ## Push Docker Image to Docker Hub
