@@ -1,0 +1,61 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: gluons-graphql
+  labels:
+    app: gluons-graphql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: gluons-graphql
+  template:
+    metadata:
+      labels:
+        pod: gluons-graphql
+    spec:
+      containers:
+        - name: gluons-graphql
+          image: euonymus/gluons-graphql:1.5
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          # env:
+          #   - name: POSTGRES_USER
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: user
+
+          #   - name: POSTGRES_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: password
+
+          #   - name: POSTGRES_HOST
+          #     value: postgres-service
+
+          #   - name: REDIS_HOST
+          #     value: redis-service
+
+          # env:
+          #   - name: MY_POD_NAME
+          #     valueFrom:
+          #       fieldRef:
+          #         fieldPath: metadata.name
+          #   - name: MY_POD_NAMESPACE
+          #     valueFrom:
+          #       fieldRef:
+          #         fieldPath: metadata.namespace
+          #   - name: MY_POD_IP
+          #     valueFrom:
+          #       fieldRef:
+          #         fieldPath: status.podIP
+          #   - name: DATABASE_NAME
+          #     value: app_db
+          #   - name: DATABASE_USER
+          #     value: app_db_user
+          #   - name: DATABASE_PASSWORD
+          #     value: app_db_pw
