@@ -35,7 +35,7 @@ $ docker build -t euonymus/gluons-graphql:[versioning-tag] .
 ## Run Docker container on local
 
 ```
-$ docker run -it --name gluons-graphql --network gluons-network -p 8000:8000 euonymus/gluons-graphql:[versioning-tag]
+$ docker run -it --rm --name gluons-graphql --network gluons-network -p 8000:8000 euonymus/gluons-graphql:[versioning-tag]
 ```
 
 ## Database migration
