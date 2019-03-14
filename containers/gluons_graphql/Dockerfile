@@ -20,5 +20,6 @@ ADD requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 ADD . /app
+ADD ./gluons/.env.docker /app/gluons/.env
 
 CMD gunicorn -b :8000 gluons.wsgi
