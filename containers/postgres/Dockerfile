@@ -1,9 +1,12 @@
 # https://github.com/iquiw/docker-pgroonga-on-postgres/blob/master/Dockerfile
 FROM postgres:11
 
+RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PGROONGA_VERSION=2.1.8
 
+COPY sqls/*.sql /docker-entrypoint-initdb.d/
 COPY groonga.list /tmp/
 
 RUN apt-get update && \

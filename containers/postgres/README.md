@@ -4,7 +4,7 @@
 
 ```
 $ cd [path-to-project]/containers/postgres
-$ docker build -t euonymus/gluons-postgres:[versioning-tag] .
+$ docker build --rm -t euonymus/gluons-postgres:[versioning-tag] .
 ```
 
 ## Run Docker container

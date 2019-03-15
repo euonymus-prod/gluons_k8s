@@ -11,11 +11,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # pgroonga を登録する(一回のみ)
-        migrations.RunSQL(
-            'CREATE EXTENSION pgroonga',
-            'DROP EXTENSION pgroonga',
-        ),
+        # # pgroonga を登録する(一回のみ)
+        # migrations.RunSQL(
+        #     'CREATE EXTENSION pgroonga',
+        #     'DROP EXTENSION pgroonga',
+        # ),
 
         # 全文検索用インデックスを作成する(検索対象のカラムごとに作成)
         migrations.RunSQL(
