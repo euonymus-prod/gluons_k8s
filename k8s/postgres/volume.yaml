@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+  labels:
+    name: postgres-pv
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  hostPath:
+    path: /data/postgres-pv
+
+  # persistentVolumeReclaimPolicy: Retain
+  # gcePersistentDisk:
+  #   pdName: postgres-pv
+  #   fsType: ext4
