@@ -21,19 +21,19 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
-          # env:
-          #   - name: DB_USER
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: postgres-credentials
-          #         key: user
-          #   - name: DB_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: postgres-credentials
-          #         key: password
-          #   - name: DB_HOST
-          #     value: postgres
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+            - name: DB_HOST
+              value: postgres
           #   - name: DB_NAME
           #     value: gluons
           #   - name: DB_PORT
