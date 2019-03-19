@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: postgres-pv
   labels:
-    name: postgres-pv
+    type: local
 spec:
   capacity:
     storage: 2Gi
