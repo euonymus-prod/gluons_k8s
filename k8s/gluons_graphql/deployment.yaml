@@ -21,30 +21,25 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-credentials
-                  key: user
-
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-credentials
-                  key: password
-
-            - name: DB_HOST
-              value: postgres
-
-            - name: DB_NAME
-              value: gluons
-
-            - name: DB_PORT
-              value: 5432
-
-            - name: DB_ENGINE
-              value: django.db.backends.postgresql_psycopg2
+          # env:
+          #   - name: DB_USER
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: user
+          #   - name: DB_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: postgres-credentials
+          #         key: password
+          #   - name: DB_HOST
+          #     value: postgres
+          #   - name: DB_NAME
+          #     value: gluons
+          #   - name: DB_PORT
+          #     value: 5432
+          #   - name: DB_ENGINE
+          #     value: django.db.backends.postgresql_psycopg2
 
           #   - name: REDIS_HOST
           #     value: redis-service
