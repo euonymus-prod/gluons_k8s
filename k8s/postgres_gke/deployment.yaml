@@ -19,16 +19,16 @@ spec:
         - name: postgres
           image: euonymus/gluons-postgres:1.0
           env:
-            - name: POSTGRES_DB
+            - name: DB_NAME
               value: gluons
 
-            - name: POSTGRES_USER
+            - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
                   key: user
 
-            - name: POSTGRES_PASSWORD
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
