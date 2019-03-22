@@ -6,7 +6,7 @@ ENV LANG ja_JP.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PGROONGA_VERSION=2.1.8
 
-COPY sqls/*.sql /docker-entrypoint-initdb.d/
+# COPY sqls/*.sql /docker-entrypoint-initdb.d/
 COPY groonga.list /tmp/
 
 RUN apt-get update && \
