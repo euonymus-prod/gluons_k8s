@@ -26,6 +26,18 @@ $ docker exec -it gluons-postgres psql -U postgres -l
 $ docker exec -it gluons-postgres cat /var/lib/postgresql/data/pg_hba.conf
 ```
 
+## Push Docker Image to Docker Hub
+
+```
+$ docker login
+$ docker push euonymus/gluons-postgres:[versioning-tag]
+```
+
+---
+
+You don't neet to do below explicitly, because these Database settings are already in sqls directory, and Dockerfile will copy them into container's docker-entrypoint-initdb.d directoly. then docker automatically executes these sql's
+
+
 ## Create user and database
 
 ```
@@ -43,12 +55,5 @@ GRANT ALL PRIVILEGES ON DATABASE gluons to gluons;
 
 ```
 docker exec -it gluons-postgres psql -U postgres -d gluons --command 'CREATE EXTENSION pgroonga'
-```
-
-## Push Docker Image to Docker Hub
-
-```
-$ docker login
-$ docker push euonymus/gluons-postgres:[versioning-tag]
 ```
 

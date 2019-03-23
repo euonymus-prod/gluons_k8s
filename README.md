@@ -28,12 +28,24 @@ See [gluons_graphql](https://github.com/euonymus-prod/gluons_k8s/blob/master/con
 * Create Namespace
 * Create Context
 * Change Context
-* Apply gluons_graphql service
+* Apply Postgres config
+* Apply Application config
+* Apply Initial Jobs
+
+## Namespace preparation
 
 ```
 $ kubectl create namespace gluons
 $ kubectl config set-context gluons --namespace=gluons --user=docker-for-desktop --cluster=docker-for-desktop-cluster
 $ kubectl config use-context gluons
+```
+
+## Apply Kubeconfigs
+
+```
+$ kubectl apply -f k8s/postgres_common
+$ kubectl apply -f k8s/postgres_local
 $ kubectl apply -f k8s/gluons_graphql
+$ kubectl apply -f k8s/gluons_graphql_init
 ```
 
