@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-loaddata
+spec:
+  template:
+    spec:
+      containers:
+        - name: gluons-graphql
+          image: euonymus/gluons-graphql:1.7
+          command: ['python', 'manage.py', 'loaddata', 'graphql_api/fixtures/01_quarktype.json', 'graphql_api/fixtures/02_gluontype.json', 'graphql_api/fixtures/03_quarkproperty.json', 'graphql_api/fixtures/04_qtypeproperty.json', 'graphql_api/fixtures/05_qpropertygtype.json', 'graphql_api/fixtures/06_qpropertytype.json']
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+            - name: DB_HOST
+              value: postgres
+
+      restartPolicy: Never
+  backoffLimit: 5

@@ -42,7 +42,7 @@ $ docker run -it --rm --name gluons-graphql --network gluons-network -p 8000:800
 
 docker exec -it gluons-graphql python manage.py makemigrations
 docker exec -it gluons-graphql python manage.py migrate
-
+docker exec -it gluons-graphql python manage.py loaddata graphql_api/fixtures/01_quarktype.json graphql_api/fixtures/02_gluontype.json graphql_api/fixtures/03_quarkproperty.json graphql_api/fixtures/04_qtypeproperty.json graphql_api/fixtures/05_qpropertygtype.json graphql_api/fixtures/06_qpropertytype.json
 
 ## Push Docker Image to Docker Hub
 
